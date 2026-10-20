@@ -1,7 +1,7 @@
 # PROJECT BRIEF - Buddy: AZ-900 Exam Prep Tool (Vibe Coding Hackathon, #1MillionDevs)
 
 > Give this file to your Claude at the start of every session, together with your ROLE file and `objectives.json`.
-> Team lead: Geofry. If this brief and your Claude disagree, the brief wins. If the brief is silent, ask Geofry.
+> Team lead: Geofry. If this brief and your Claude disagree, the brief wins. If the brief is silent, ask Geofry. Also read `REPO_STRUCTURE.md` (where files go) and `docs/API_CONTRACTS.md` (how the pieces talk to each other).
 
 ## 1. What we are building
 **Buddy** is an **unofficial** AZ-900 (Microsoft Azure Fundamentals) study tool, made up of:
@@ -48,23 +48,24 @@ Pitch criteria (separate): Problem Understanding 20%, Solution & Product 25%, Ta
 - **Frontend:** keep the stack Sheryl is already using (this plan assumes React). Talks to Supabase directly for reading questions and saving attempts.
 - **Database + auth:** Supabase (Postgres). Row Level Security ON. Owned by Geofry.
 - **Backend (small on purpose), split between Geofry and Mark:**
-  - **Geofry owns everything that touches the AI provider:** the Study Buddy endpoint, the AI API integration, API keys, and the prompts in `/prompts`.
-  - **Mark owns** (a) the CSV-to-Supabase question importer with validation, (b) the **retrieval function** (Postgres full-text search over `notes` and verified `questions.explanation`) that Geofry's endpoint calls, (c) the **readiness calculation** (SQL view or function), and (d) the Study Buddy **test harness** (a list of real test questions and a script that runs them and records results).
+  - **Geofry owns everything that touches the AI provider:** the Study Buddy endpoint (`frontend/api/study-buddy.js`), the provider integration, the API keys, and the prompt (`prompts/study_buddy.md`).
+  - **Mark owns** (a) the CSV-to-Supabase importer for questions AND notes, with validation, (b) **tuning the retrieval function** `search_knowledge` (Geofry wrote the reference version in `supabase/migrations/202610210100_study_buddy_support.sql`), (c) the **readiness calculation** `get_readiness()`, and (d) the Study Buddy **test harness** with real teammate questions.
   - Anything that needs a secret API key runs server-side only.
-- **Hosting:** Vercel or equivalent, deployed by Geofry from the `main` branch.
-- **AI provider:** TBD by Geofry (depends on available credits). Code must read the key from an environment variable, so swapping provider is easy. Nobody except Geofry holds the production key; Mark uses a separate limited dev key only if Geofry issues one.
+- **Hosting:** Vercel, deployed by Geofry from the `main` branch with the project root set to `frontend/`. The Study Buddy endpoint is a Vercel serverless function in `frontend/api/`, so there is no separate backend server.
+- **AI provider (decided):** Groq `openai/gpt-oss-120b` first, Google Gemini `gemini-3.5-flash-lite` as the automatic backup, both on free tiers held only by Geofry (as environment variables). The free quotas are small (Groq: 8K tokens per minute and 200K per day), so Study Buddy has per-learner and global daily caps, a saved-answer cache, and makes **no AI call** when retrieval finds nothing.
 
 ### Data model (draft)
 - `objectives(id, domain_id, group_id, text, weight_min, weight_max)` - seeded from `objectives.json`
-- `questions(id, objective_id, stem, options jsonb, correct_index, explanation, why_wrong jsonb, source_url, author, status)` - `status` is `draft` or `verified`; **the app only shows `verified`**
+- `questions(id, objective_id, stem, options jsonb, correct_index, explanation, why_wrong jsonb, source_url, author, status, notes, verified_by, verified_at)` - `status` is `draft` or `verified`; **the app only shows `verified`**. The database refuses `verified` without a source URL, an explanation, and a `verified_by` that differs from `author`.
 - `attempts(id, user_id, question_id, selected_index, is_correct, created_at)`
-- `notes(id, objective_id, body, source_url)` - our own-words study notes, the retrieval corpus for Study Buddy
+- `notes(id, objective_id, body, source_url, author, status, notes, verified_by, verified_at)` - our own-words study notes, the retrieval corpus for Study Buddy (same verification rules as questions)
+- `ai_usage(id, user_id, created_at)` and `app_settings(key, value)` - the daily AI caps (20 per learner, 200 in total by default); not readable from the browser
 
 ### Readiness score (draft)
 Per domain: accuracy = correct / attempted. Overall = weighted average using the midpoint of each official weight range (27.5 / 37.5 / 32.5), normalised to sum to 100. Show "not enough data" until a minimum number of attempts per domain. **Label it "estimate - not an official prediction of your exam score"**, because Microsoft's passing score (700) is a scaled score, not a plain percentage.
 
 ### Study Buddy RAG rules
-1. Retrieve from `notes` (and verified `questions.explanation`) first - start with Postgres full-text search; only add embeddings if there is time.
+1. Retrieve with `search_knowledge()` from verified `notes` and verified `questions.explanation` (Postgres full-text search; a passage must match at least half of the question's meaningful words). Embeddings only if there is time.
 2. Answer ONLY from retrieved text. Cite the objective and `source_url`.
 3. If nothing relevant is retrieved, reply that it is outside our notes and point to the Microsoft Learn page. Never guess.
 4. Simple English, short, one real African-context analogy where it helps. Swahili/other languages are a **stretch goal** - only ship it if tested by a fluent speaker.
@@ -76,8 +77,8 @@ Per domain: accuracy = correct / attempted. Overall = weighted average using the
 - Pull from `main` before you start each session.
 
 ## 8. Open decisions (Geofry to settle)
-1. AI provider and credits/budget.
-2. Auth style (email login vs anonymous sign-in) - decide Wednesday morning.
+1. ~~AI provider~~ - decided: Groq first, Gemini backup, free tiers (see section 6). Real-world answer quality is still untested until Mark's test run.
+2. ~~Auth style~~ - decided: anonymous sign-in (email sign-in is limited to 2 emails per hour on Supabase's built-in sender).
 3. ~~Final product name~~ - decided: **Buddy**.
 4. Real submission link, Canva template link and Microsoft Learn link - the hackathon brief shows these as placeholders.
-5. Question count target: 6 verified questions per objective group (66 total) is the minimum; 10 per group is the stretch.
+5. Question count target: 6 verified questions per objective group (66 total) is the minimum; 10 per group is the stretch. Plus at least 1 verified note per group. **Content freeze Thursday 22:00.**

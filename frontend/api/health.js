@@ -15,7 +15,7 @@ async function countRows(base, key, table) {
   return total === undefined ? null : Number(total);
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   const base = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_PUBLISHABLE_KEY;
   const env = { SUPABASE_URL: Boolean(base), SUPABASE_PUBLISHABLE_KEY: Boolean(key) };
@@ -42,4 +42,4 @@ module.exports = async function handler(req, res) {
   } catch (err) {
     return res.status(500).json({ ok: false, env, error: String(err.message || err) });
   }
-};
+}

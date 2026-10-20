@@ -1,0 +1,334 @@
+{
+  "_meta": {
+    "source": "Microsoft Learn - Study guide for Exam AZ-900: Microsoft Azure Fundamentals, 'Skills measured as of January 14, 2026'",
+    "source_url": "https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-900",
+    "note": "Objective text and weights are copied from the official study guide. The IDs (D1, D1.1, D1.1.1 ...) are OUR OWN labels for the database, not Microsoft's. Each objective ID is <group id>.<position in the official list>, e.g. D1.1.2 is the second bullet under group D1.1. Always use the id field, never count positions by hand. Microsoft updates this guide periodically - re-check the source before final submission.",
+    "pass_score": "700 or greater is required to pass (Microsoft scaled score)"
+  },
+  "domains": [
+    {
+      "id": "D1",
+      "title": "Describe cloud concepts",
+      "weight_range_percent": [
+        25,
+        30
+      ],
+      "groups": [
+        {
+          "id": "D1.1",
+          "title": "Describe cloud computing",
+          "objectives": [
+            {
+              "id": "D1.1.1",
+              "text": "Define cloud computing"
+            },
+            {
+              "id": "D1.1.2",
+              "text": "Describe the shared responsibility model"
+            },
+            {
+              "id": "D1.1.3",
+              "text": "Define cloud models, including public, private, and hybrid"
+            },
+            {
+              "id": "D1.1.4",
+              "text": "Identify appropriate use cases for each cloud model"
+            },
+            {
+              "id": "D1.1.5",
+              "text": "Describe the consumption-based model"
+            },
+            {
+              "id": "D1.1.6",
+              "text": "Compare cloud pricing models"
+            },
+            {
+              "id": "D1.1.7",
+              "text": "Describe serverless"
+            }
+          ]
+        },
+        {
+          "id": "D1.2",
+          "title": "Describe the benefits of using cloud services",
+          "objectives": [
+            {
+              "id": "D1.2.1",
+              "text": "Describe the benefits of high availability and scalability in the cloud"
+            },
+            {
+              "id": "D1.2.2",
+              "text": "Describe the benefits of reliability and predictability in the cloud"
+            },
+            {
+              "id": "D1.2.3",
+              "text": "Describe the benefits of security and governance in the cloud"
+            },
+            {
+              "id": "D1.2.4",
+              "text": "Describe the benefits of manageability in the cloud"
+            }
+          ]
+        },
+        {
+          "id": "D1.3",
+          "title": "Describe cloud service types",
+          "objectives": [
+            {
+              "id": "D1.3.1",
+              "text": "Describe infrastructure as a service (IaaS)"
+            },
+            {
+              "id": "D1.3.2",
+              "text": "Describe platform as a service (PaaS)"
+            },
+            {
+              "id": "D1.3.3",
+              "text": "Describe software as a service (SaaS)"
+            },
+            {
+              "id": "D1.3.4",
+              "text": "Identify appropriate use cases for each cloud service type (IaaS, PaaS, and SaaS)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D2",
+      "title": "Describe Azure architecture and services",
+      "weight_range_percent": [
+        35,
+        40
+      ],
+      "groups": [
+        {
+          "id": "D2.1",
+          "title": "Describe the core architectural components of Azure",
+          "objectives": [
+            {
+              "id": "D2.1.1",
+              "text": "Describe Azure regions, region pairs, and sovereign regions"
+            },
+            {
+              "id": "D2.1.2",
+              "text": "Describe availability zones"
+            },
+            {
+              "id": "D2.1.3",
+              "text": "Describe Azure datacenters"
+            },
+            {
+              "id": "D2.1.4",
+              "text": "Describe Azure resources and resource groups"
+            },
+            {
+              "id": "D2.1.5",
+              "text": "Describe subscriptions"
+            },
+            {
+              "id": "D2.1.6",
+              "text": "Describe management groups"
+            },
+            {
+              "id": "D2.1.7",
+              "text": "Describe the hierarchy of resource groups, subscriptions, and management groups"
+            }
+          ]
+        },
+        {
+          "id": "D2.2",
+          "title": "Describe Azure compute and networking services",
+          "objectives": [
+            {
+              "id": "D2.2.1",
+              "text": "Compare compute types, including containers, virtual machines, and functions"
+            },
+            {
+              "id": "D2.2.2",
+              "text": "Describe virtual machine options, including Azure virtual machines, Azure Virtual Machine Scale Sets, availability sets, and Azure Virtual Desktop"
+            },
+            {
+              "id": "D2.2.3",
+              "text": "Describe the resources required for virtual machines"
+            },
+            {
+              "id": "D2.2.4",
+              "text": "Describe application hosting options, including web apps, containers, and virtual machines"
+            },
+            {
+              "id": "D2.2.5",
+              "text": "Describe virtual networking, including the purpose of Azure virtual networks, Azure virtual subnets, peering, Azure DNS, Azure VPN Gateway, and ExpressRoute"
+            },
+            {
+              "id": "D2.2.6",
+              "text": "Define public and private endpoints"
+            }
+          ]
+        },
+        {
+          "id": "D2.3",
+          "title": "Describe Azure storage services",
+          "objectives": [
+            {
+              "id": "D2.3.1",
+              "text": "Compare Azure Storage services"
+            },
+            {
+              "id": "D2.3.2",
+              "text": "Describe storage tiers"
+            },
+            {
+              "id": "D2.3.3",
+              "text": "Describe redundancy options"
+            },
+            {
+              "id": "D2.3.4",
+              "text": "Describe storage account options and storage types"
+            },
+            {
+              "id": "D2.3.5",
+              "text": "Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync"
+            },
+            {
+              "id": "D2.3.6",
+              "text": "Describe migration options, including Azure Migrate and Azure Data Box"
+            }
+          ]
+        },
+        {
+          "id": "D2.4",
+          "title": "Describe Azure identity, access, and security",
+          "objectives": [
+            {
+              "id": "D2.4.1",
+              "text": "Describe directory services in Azure, including Microsoft Entra ID and Microsoft Entra Domain Services"
+            },
+            {
+              "id": "D2.4.2",
+              "text": "Describe authentication methods in Azure, including single sign-on (SSO), multifactor authentication (MFA), and passwordless"
+            },
+            {
+              "id": "D2.4.3",
+              "text": "Describe external identities in Azure"
+            },
+            {
+              "id": "D2.4.4",
+              "text": "Describe Microsoft Entra Conditional Access"
+            },
+            {
+              "id": "D2.4.5",
+              "text": "Describe Azure role-based access control (RBAC)"
+            },
+            {
+              "id": "D2.4.6",
+              "text": "Describe the concept of Zero Trust"
+            },
+            {
+              "id": "D2.4.7",
+              "text": "Describe the purpose of the defense-in-depth model"
+            },
+            {
+              "id": "D2.4.8",
+              "text": "Describe the purpose of Microsoft Defender for Cloud"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D3",
+      "title": "Describe Azure management and governance",
+      "weight_range_percent": [
+        30,
+        35
+      ],
+      "groups": [
+        {
+          "id": "D3.1",
+          "title": "Describe cost management in Azure",
+          "objectives": [
+            {
+              "id": "D3.1.1",
+              "text": "Describe factors that can affect costs in Azure"
+            },
+            {
+              "id": "D3.1.2",
+              "text": "Explore the pricing calculator"
+            },
+            {
+              "id": "D3.1.3",
+              "text": "Describe cost management capabilities in Azure"
+            },
+            {
+              "id": "D3.1.4",
+              "text": "Describe the purpose of tags"
+            }
+          ]
+        },
+        {
+          "id": "D3.2",
+          "title": "Describe features and tools in Azure for governance and compliance",
+          "objectives": [
+            {
+              "id": "D3.2.1",
+              "text": "Describe the purpose of Microsoft Purview in Azure"
+            },
+            {
+              "id": "D3.2.2",
+              "text": "Describe the purpose of Azure Policy"
+            },
+            {
+              "id": "D3.2.3",
+              "text": "Describe the purpose of resource locks"
+            }
+          ]
+        },
+        {
+          "id": "D3.3",
+          "title": "Describe features and tools for managing and deploying Azure resources",
+          "objectives": [
+            {
+              "id": "D3.3.1",
+              "text": "Describe the Azure portal"
+            },
+            {
+              "id": "D3.3.2",
+              "text": "Describe Azure Cloud Shell, including Azure Command-Line Interface (CLI) and Azure PowerShell"
+            },
+            {
+              "id": "D3.3.3",
+              "text": "Describe the purpose of Azure Arc"
+            },
+            {
+              "id": "D3.3.4",
+              "text": "Describe infrastructure as code (IaC)"
+            },
+            {
+              "id": "D3.3.5",
+              "text": "Describe Azure Resource Manager (ARM) and ARM templates"
+            }
+          ]
+        },
+        {
+          "id": "D3.4",
+          "title": "Describe monitoring tools in Azure",
+          "objectives": [
+            {
+              "id": "D3.4.1",
+              "text": "Describe the purpose of Azure Advisor"
+            },
+            {
+              "id": "D3.4.2",
+              "text": "Describe Azure Service Health"
+            },
+            {
+              "id": "D3.4.3",
+              "text": "Describe Azure Monitor, including Log Analytics, Azure Monitor alerts, and Application Insights"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

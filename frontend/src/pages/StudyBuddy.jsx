@@ -68,9 +68,16 @@ export default function StudyBuddy() {
         {thread.map((m) => (
           <div key={m.id} className="exchange">
             <p className="you">{m.question}</p>
-            {!m.reply && !m.error && <p className="muted" role="status">Checking the notes…</p>}
+            {!m.reply && !m.error && (
+              <div className="buddy-row">
+                <img className="avatar" src="/brand/buddy-mark.png" alt="" width="32" height="26" />
+                <p className="typing" role="status"><span className="sr-only">Checking the notes</span><i /><i /><i /></p>
+              </div>
+            )}
             {m.error && <p className="notice notice-error" role="alert">{m.error}</p>}
             {m.reply && (
+              <div className="buddy-row">
+              <img className="avatar" src="/brand/buddy-mark.png" alt="" width="32" height="26" />
               <div className={`buddy ${m.reply.outside_notes ? 'buddy-outside' : ''}`}>
                 {m.reply.outside_notes
                   ? <><p className="answer-text">{m.reply.answer}</p></>
@@ -91,6 +98,7 @@ export default function StudyBuddy() {
                     </ul>
                   </div>
                 )}
+              </div>
               </div>
             )}
           </div>

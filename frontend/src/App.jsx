@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Quiz from './pages/Quiz'
 import Dashboard from './pages/Dashboard'
 import StudyBuddy from './pages/StudyBuddy'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   useEffect(() => {
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/study-buddy" element={<StudyBuddy />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

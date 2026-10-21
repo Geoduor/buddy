@@ -1,1 +1,2 @@
-
+objective_id,body,source_url,author,status,notes
+D2.3.1,"Azure gives you five main ways to store data. Blobs are for big piles of unstructured content like pictures, videos and backup copies. Files work like shared folders in the cloud, which computers open using the SMB or NFS protocols. Queues keep messages waiting so one part of an application can pass work to another. Disks act as the hard drives of Azure virtual machines. Tables hold structured data in a non-relational (NoSQL) way. To pick one, ask what you are saving: documents, messages, VM drives or table-s

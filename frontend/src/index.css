@@ -1,0 +1,51 @@
+:root {
+  /* Colours eyeballed from the Buddy logo. Confirm with a colour picker. */
+  --navy: #1e1b58;
+  --coral: #f8584d;
+  --mint: #5dd9be;
+  --bg: #f7f8fc;
+  --card: #ffffff;
+  --muted: #5b5f7a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--navy);
+}
+
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px; background: var(--card);
+  border-bottom: 1px solid #e6e8f2;
+}
+.brand { font-size: 1.5rem; font-weight: 800; color: var(--navy); }
+
+.nav { display: flex; gap: 8px; }
+.nav-link {
+  padding: 8px 14px; border-radius: 999px;
+  text-decoration: none; color: var(--muted); font-weight: 600;
+}
+.nav-link.active { background: var(--navy); color: #fff; }
+
+.content { flex: 1; width: 100%; max-width: 900px; margin: 0 auto; padding: 24px 20px; }
+
+.footer {
+  text-align: center; padding: 16px; font-size: 0.85rem; color: var(--muted);
+}
+
+/* Phones: move the menu to the bottom, like a real mobile app */
+@media (max-width: 640px) {
+  .app { padding-bottom: 64px; }
+  .nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    justify-content: space-around; background: var(--card);
+    border-top: 1px solid #e6e8f2; padding: 8px;
+  }
+  .nav-link { padding: 8px 10px; font-size: 0.85rem; }
+}

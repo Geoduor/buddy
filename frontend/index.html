@@ -1,36 +1,13 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Buddy - AZ-900 study tool (placeholder)</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 36rem; margin: 3rem auto; padding: 0 1rem; line-height: 1.5; }
-    button { padding: .6rem 1rem; font-size: 1rem; cursor: pointer; }
-    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; border-radius: .5rem; }
-    .note { color: #555; font-size: .9rem; }
-  </style>
-</head>
-<body>
-  <h1>Buddy</h1>
-  <p>An AZ-900 study buddy. <strong>Placeholder page:</strong> the real app is being built.</p>
-
-  <button id="check">Run system check</button>
-  <pre id="out">Not run yet.</pre>
-
-  <p class="note">Unofficial - not affiliated with or endorsed by Microsoft.</p>
-
-  <script>
-    document.getElementById('check').addEventListener('click', async () => {
-      const out = document.getElementById('out');
-      out.textContent = 'Checking...';
-      try {
-        const res = await fetch('/api/health');
-        out.textContent = JSON.stringify(await res.json(), null, 2);
-      } catch (e) {
-        out.textContent = 'Could not reach /api/health: ' + e.message;
-      }
-    });
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buddy - AZ-900 study buddy</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

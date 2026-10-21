@@ -1,5 +1,7 @@
 # Study Buddy evaluation: how we test the prompt (owner: Geofry, runner: Mark)
 
+> The questions live in `content/test-questions/test_questions.csv` (columns `id,asked_by,question,expected,notes`, where `expected` is `in_notes` or `outside_notes`). Mark's `backend/tests/run_tests.js` reads that file. The `type` mix below is for planning; put it in the `notes` column (e.g. `reworded`, `trick`).
+
 Purpose: prove, with real questions from real teammates, that Buddy (1) answers only from our verified notes,
 (2) cites them, (3) refuses politely when the notes do not cover the question. Results go in the table at the bottom
 and in the README. This is evidence for the Prompt Engineering criterion (20%).

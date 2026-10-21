@@ -5,6 +5,19 @@ import { ensureSession } from '../lib/session'
 import { Loading, ErrorBox } from '../components/Notice'
 
 const pct = (x) => Math.round(Number(x) * 100)
+const TONES = ['ink', 'coral', 'mint']
+
+function Gauge({ value }) {
+  // Half-circle gauge; value is 0 to 1
+  const len = Math.PI * 80
+  return (
+    <svg className="gauge" viewBox="0 0 200 112" role="img" aria-label={`${pct(value)} percent overall accuracy`}>
+      <path d="M20 100 A80 80 0 0 1 180 100" className="gauge-track" />
+      <path d="M20 100 A80 80 0 0 1 180 100" className="gauge-fill" style={{ strokeDasharray: len, strokeDashoffset: len * (1 - Number(value)) }} />
+      <text x="100" y="92" textAnchor="middle" className="gauge-text">{pct(value)}%</text>
+    </svg>
+  )
+}
 
 export default function Dashboard() {
   const [rows, setRows] = useState(null)
@@ -51,7 +64,7 @@ export default function Dashboard() {
           <div className="overall">
             {overall.accuracy !== null ? (
               <>
-                <p className="big-score">{pct(overall.accuracy)}%</p>
+                <Gauge value={fill ? overall.accuracy : 0} />
                 <p>Overall accuracy across the three exam areas, weighted the way the exam is.</p>
               </>
             ) : (
@@ -64,8 +77,8 @@ export default function Dashboard() {
           </div>
 
           <ul className="bars">
-            {domains.map((d) => (
-              <li key={d.domain_id} className="bar-row">
+            {domains.map((d, i) => (
+              <li key={d.domain_id} className={`bar-row tone-${TONES[i % 3]}`}>
                 <div className="bar-head">
                   <h2>{d.domain_title}</h2>
                   <p className="muted small">{d.weight}% of the exam</p>
@@ -85,6 +98,8 @@ export default function Dashboard() {
               </li>
             ))}
           </ul>
+
+          <p className="muted small saved-note">Your progress is saved in this browser. Clearing site data starts you from zero.</p>
 
           {weakest && (
             <p className="focus">

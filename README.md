@@ -86,6 +86,7 @@ Names only. Never commit real values. Copy `.env.example` to `.env`.
 - Free AI tiers have small quotas, so daily caps apply.
 - Swahili and other languages are a stretch goal, shipped only if a fluent speaker has tested them.
 - Readiness is an estimate, not an official score.
+- There are no accounts: progress is saved in the browser through anonymous sign-in, so clearing site data or switching device starts from zero.
 
 ## Team
 | Name | Role |

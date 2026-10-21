@@ -1,5 +1,12 @@
 export function Loading({ children = 'Loading' }) {
-  return <p className="muted" role="status">{children}…</p>
+  return (
+    <div className="skeleton-wrap" role="status" aria-label={children}>
+      <span className="skeleton" style={{ width: '60%' }} />
+      <span className="skeleton" style={{ width: '90%' }} />
+      <span className="skeleton" style={{ width: '75%' }} />
+      <span className="sr-only">{children}</span>
+    </div>
+  )
 }
 
 export function ErrorBox({ children, onRetry }) {

@@ -26,15 +26,42 @@ export default function Home() {
             Short quizzes that explain every answer, a readiness check for each exam area, and a study buddy that answers only from notes we have checked.
           </p>
           <div className="hero-actions">
-            <Link className="btn btn-primary" to="/quiz?scope=all">Start practising</Link>
-            <Link className="btn btn-quiet" to="/study-buddy">Ask a question</Link>
+            <Link className="btn btn-primary btn-lg" to="/quiz?scope=all">Start practising</Link>
+            <Link className="btn btn-quiet btn-lg" to="/study-buddy">Ask a question</Link>
           </div>
+          <p className="muted small">No account needed. Your progress is saved in this browser.</p>
         </div>
-        <div className="sheet-row" aria-hidden="true">
-          {['A', 'B', 'C', 'D'].map((l) => (
-            <span key={l} className={`bubble ${l === 'C' ? 'bubble-fill-demo' : ''}`}><span>{l}</span></span>
+        <div className="paper" aria-hidden="true">
+          {[1, 2, 3].map((row) => (
+            <div key={row} className="paper-row">
+              <span className="paper-n">{row}</span>
+              {['A', 'B', 'C', 'D'].map((l) => (
+                <span key={l} className={`bubble ${(row + (l.charCodeAt(0) - 65)) % 4 === 1 ? `bubble-fill-demo bubble-d${row}` : ''}`}><span>{l}</span></span>
+              ))}
+            </div>
           ))}
         </div>
+      </section>
+
+      <section className="steps" aria-labelledby="how-h">
+        <h2 id="how-h">How Buddy helps</h2>
+        <ol className="step-list">
+          <li>
+            <h3>Practise</h3>
+            <p>Answer one question at a time, tied to an official exam objective.</p>
+            <Link to="/quiz">Open the quiz</Link>
+          </li>
+          <li>
+            <h3>Understand</h3>
+            <p>See why the right answer is right and why the others are not, with a link to Microsoft Learn.</p>
+            <Link to="/study-buddy">Ask Buddy a question</Link>
+          </li>
+          <li>
+            <h3>Track</h3>
+            <p>Watch your accuracy build for each exam area, and see where to practise next.</p>
+            <Link to="/dashboard">See your readiness</Link>
+          </li>
+        </ol>
       </section>
 
       <section aria-labelledby="topics-h">

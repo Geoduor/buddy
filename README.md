@@ -59,7 +59,7 @@ Full ownership rules: [`REPO_STRUCTURE.md`](REPO_STRUCTURE.md).
 ## Run it yourself
 1. **Supabase.** Create a project. In the SQL editor run the files in `supabase/migrations/` in filename order, then `supabase/seed/objectives_seed.sql`. Turn on **Anonymous sign-ins** in Authentication settings.
 2. **Vercel.** Import this repo with **Root Directory = `frontend`**. Add the environment variables below, then redeploy (changes apply only to new deployments).
-3. **Frontend commands.** _PLACEHOLDER - Sheryl to fill in once the frontend framework is final._
+3. **Frontend (React + Vite).** `cd frontend`, then `npm install`. Create `frontend/.env.local` with `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`, then `npm run dev`. The local dev server does not run the `/api` functions, so the Study Buddy needs the deployed site or a Vercel preview. `npm run build` makes the production build.
 4. **Check it works:** `node scripts/smoke-test.mjs <your-site-url>` (needs `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in a local `.env`).
 
 ### Environment variables

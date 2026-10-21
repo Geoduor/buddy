@@ -1,0 +1,12 @@
+# Buddy: tells the Supabase GitHub integration NOT to run migrations automatically.
+#
+# Why: the team applies supabase/migrations/*.sql by hand in the Supabase SQL editor (see README),
+# so Supabase's own migration history is empty. If the integration ran them again it would fail with
+# "relation already exists" (or, worse, touch production). Geofry runs each new migration deliberately.
+#
+# Source: Supabase branching docs say [db.migrations] enabled = false stops branching from running migrations.
+
+project_id = "buddy"
+
+[db.migrations]
+enabled = false

@@ -1,0 +1,14 @@
+{
+  "name": "buddy-importer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node import.js --dry-run",
+    "import": "node import.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "csv-parse": "^5.5.6",
+    "dotenv": "^16.4.5"
+  }
+}

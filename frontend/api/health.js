@@ -27,17 +27,27 @@ export default async function handler(req, res) {
   }
 
   try {
-    const [domains, objectives] = await Promise.all([
+    // Counts use the public key, so Row Level Security applies: questions and notes are the VERIFIED ones
+    // a learner can see. If these say 0 while you have verified rows, this site is connected to a different
+    // Supabase project than the one you verified in (compare `project` below with your dashboard).
+    const [domains, objectives, verifiedQuestions, verifiedNotes] = await Promise.all([
       countRows(base, key, 'domains'),
       countRows(base, key, 'objectives'),
+      countRows(base, key, 'questions'),
+      countRows(base, key, 'notes'),
     ]);
     const ok = domains === 3 && objectives === 57;
+    let project = null;
+    try { project = new URL(base).hostname.split('.')[0]; } catch { /* leave null */ }
     return res.status(ok ? 200 : 500).json({
       ok,
       env,
+      project,
       domains,
       objectives,
       expected: { domains: 3, objectives: 57 },
+      verified_questions_visible: verifiedQuestions,
+      verified_notes_visible: verifiedNotes,
     });
   } catch (err) {
     return res.status(500).json({ ok: false, env, error: String(err.message || err) });

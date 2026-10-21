@@ -73,7 +73,10 @@ console.log(`\nBuddy smoke test against ${base}\n`);
 console.log('1. Health check');
 {
   const r = await request(`${base}/api/health`);
-  if (r.json?.ok === true) pass(`site reaches Supabase (${r.json.domains} domains, ${r.json.objectives} objectives)`);
+  if (r.json?.ok === true) {
+    pass(`site reaches Supabase project "${r.json.project}" (${r.json.domains} domains, ${r.json.objectives} objectives)`);
+    info(`learners can see ${r.json.verified_questions_visible ?? '?'} verified question(s) and ${r.json.verified_notes_visible ?? '?'} verified note(s)`);
+  }
   else fail(notJsonHint(r) || `health check failed: ${JSON.stringify(r.json).slice(0, 300)}`);
 }
 

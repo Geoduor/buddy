@@ -104,7 +104,7 @@ export function validateFile(file, text, seen = new Set()) {
 
 function listCsv(dir) {
   const p = join(root, dir);
-  return existsSync(p) ? readdirSync(p).filter((f) => f.endsWith('.csv') && !f.startsWith('_')).map((f) => join(p, f)) : [];
+  return existsSync(p) ? readdirSync(p).filter((f) => f.endsWith('.csv') && !f.startsWith('_') && !/template/i.test(f)).map((f) => join(p, f)) : [];
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

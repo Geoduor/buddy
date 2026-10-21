@@ -13,6 +13,11 @@ jobs:
           node-version: 20
       - name: Study Buddy tests
         run: node frontend/server/study-buddy.test.mjs
+      - name: Frontend builds
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
       - name: Validate content CSVs
         run: node scripts/validate_content.mjs
       - name: No secrets committed

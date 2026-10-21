@@ -51,7 +51,7 @@ API shapes are documented in [`docs/API_CONTRACTS.md`](docs/API_CONTRACTS.md).
 | `supabase/` | Database migrations and the objectives seed |
 | `prompts/` | Study Buddy prompt notes and evaluation plan |
 | `scripts/` | Smoke test, content validator, verification SQL |
-| `tests/` | Study Buddy evaluation sheet |
+| `backend/tests/` | Study Buddy test harness (reads `content/test-questions/test_questions.csv`) |
 | `docs/` | API contracts, verification checklist |
 
 Full ownership rules: [`REPO_STRUCTURE.md`](REPO_STRUCTURE.md).

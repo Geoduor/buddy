@@ -8,7 +8,9 @@ import { join, basename, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const outline = JSON.parse(readFileSync(join(root, 'objectives.json'), 'utf8'));
+const outlinePath = ['content/objectives.json', 'objectives.json'].map((p) => join(root, p)).find((p) => existsSync(p));
+if (!outlinePath) { console.error('objectives.json not found (expected content/objectives.json)'); process.exit(1); }
+const outline = JSON.parse(readFileSync(outlinePath, 'utf8'));
 const objectiveIds = new Set();
 const groupIds = new Set();
 for (const d of outline.domains) for (const g of d.groups) { groupIds.add(g.id); for (const o of g.objectives) objectiveIds.add(o.id); }

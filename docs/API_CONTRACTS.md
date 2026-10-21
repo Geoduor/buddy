@@ -2,7 +2,7 @@
 
 > For Sheryl (frontend), Mark (backend data), and every AI assistant on the team.
 > If your code and this file disagree, tell Geofry before changing either one.
-> Anything marked **(Mark)** is being built by Mark; code against the shape below and use clearly labelled "sample" data until it is live.
+> Anything marked **(Mark)** or **(Geofry)** is being built by that person; code against the shape below and use clearly labelled "sample" data until it is live.
 
 Supabase values come from the team's private message: URL and publishable key. In a Vite app they are read as `import.meta.env.VITE_SUPABASE_URL` and `import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY`.
 
@@ -32,7 +32,7 @@ await supabase.from('attempts').insert({ question_id, selected_index })   // 0 t
 ```
 Send only these two fields. `user_id` is filled in automatically. `is_correct` is **computed by the database**, so never send it. Show feedback from `correct_index` on the screen; the saved record is for the readiness score.
 
-## 4. Readiness score **(Mark)**
+## 4. Readiness score **(Geofry; migration `202610210200_readiness.sql`)**
 ```js
 const { data } = await supabase.rpc('get_readiness')
 ```
@@ -43,9 +43,9 @@ Returns one row per domain plus an overall row:
 | `domain_id` | `D1`, `D2`, `D3`, or `OVERALL` |
 | `domain_title` | name from the official outline (`Overall` for the overall row) |
 | `weight` | official weight midpoint: D1 27.5, D2 37.5, D3 32.5 (overall row: 100) |
-| `attempted` | number of answers this learner gave |
-| `correct` | number correct |
-| `accuracy` | 0 to 1, or `null` when `attempted` is below the minimum (starting value: 5) |
+| `attempted` | number of DIFFERENT questions this learner answered (only the latest attempt at each question counts) |
+| `correct` | of those, how many were right on the latest attempt |
+| `accuracy` | 0 to 1, or `null` when `attempted` is below the minimum (5 by default). The `OVERALL` accuracy is `null` until **all three** domains reach the minimum, and is weighted by the midpoints above, normalised to 100%. |
 
 Rule for the screen: when `accuracy` is `null`, show "Not enough data yet". Always label the score **"estimate - not an official prediction of your exam score"** (Microsoft's pass mark of 700 is a scaled score, not a percentage).
 

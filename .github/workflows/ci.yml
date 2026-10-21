@@ -1,0 +1,21 @@
+name: checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Study Buddy tests
+        run: node frontend/server/study-buddy.test.mjs
+      - name: Validate content CSVs
+        run: node scripts/validate_content.mjs
+      - name: No secrets committed
+        run: |
+          if git ls-files | grep -E '(^|/)\.env$'; then echo "A .env file is committed"; exit 1; fi
+          if git grep -nE '(gsk_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|sb_secret_[A-Za-z0-9_-]{10,})' -- . ':!*.md'; then echo "Looks like a real key is committed"; exit 1; fi

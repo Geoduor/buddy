@@ -48,8 +48,8 @@ Pitch criteria (separate): Problem Understanding 20%, Solution & Product 25%, Ta
 - **Frontend:** keep the stack Sheryl is already using (this plan assumes React). Talks to Supabase directly for reading questions and saving attempts.
 - **Database + auth:** Supabase (Postgres). Row Level Security ON. Owned by Geofry.
 - **Backend (small on purpose), split between Geofry and Mark:**
-  - **Geofry owns everything that touches the AI provider:** the Study Buddy endpoint (`frontend/api/study-buddy.js`), the provider integration, the API keys, and the prompt (`prompts/study_buddy.md`).
-  - **Mark owns** (a) the CSV-to-Supabase importer for questions AND notes, with validation, (b) **tuning the retrieval function** `search_knowledge` (Geofry wrote the reference version in `supabase/migrations/202610210100_study_buddy_support.sql`), (c) the **readiness calculation** `get_readiness()`, and (d) the Study Buddy **test harness** with real teammate questions.
+  - **Geofry owns everything that touches the AI provider:** the Study Buddy endpoint (`frontend/api/study-buddy.js`), the provider integration, the API keys, and the prompt (`prompts/study_buddy.md`). **Geofry also owns the readiness function** `get_readiness()` (`supabase/migrations/202610210200_readiness.sql`).
+  - **Mark owns** (a) the CSV-to-Supabase importer for questions AND notes, with validation, (b) **tuning the retrieval function** `search_knowledge` (Geofry wrote the reference version in `supabase/migrations/202610210100_study_buddy_support.sql`), and (c) the Study Buddy **test harness** with real teammate questions.
   - Anything that needs a secret API key runs server-side only.
 - **Hosting:** Vercel, deployed by Geofry from the `main` branch with the project root set to `frontend/`. The Study Buddy endpoint is a Vercel serverless function in `frontend/api/`, so there is no separate backend server.
 - **AI provider (decided):** Groq `openai/gpt-oss-120b` first, Google Gemini `gemini-3.5-flash-lite` as the automatic backup, both on free tiers held only by Geofry (as environment variables). The free quotas are small (Groq: 8K tokens per minute and 200K per day), so Study Buddy has per-learner and global daily caps, a saved-answer cache, and makes **no AI call** when retrieval finds nothing.
@@ -62,7 +62,7 @@ Pitch criteria (separate): Problem Understanding 20%, Solution & Product 25%, Ta
 - `ai_usage(id, user_id, created_at)` and `app_settings(key, value)` - the daily AI caps (20 per learner, 200 in total by default); not readable from the browser
 
 ### Readiness score (draft)
-Per domain: accuracy = correct / attempted. Overall = weighted average using the midpoint of each official weight range (27.5 / 37.5 / 32.5), normalised to sum to 100. Show "not enough data" until a minimum number of attempts per domain. **Label it "estimate - not an official prediction of your exam score"**, because Microsoft's passing score (700) is a scaled score, not a plain percentage.
+Computed by `get_readiness()` from the learner's own attempts. Only the **latest attempt at each question** counts (so retrying one easy question cannot inflate the score). A domain shows an accuracy only after at least 5 different questions are answered in it (setting `readiness_min_attempts`). Overall = weighted average of the three domain accuracies using the midpoint of each official weight range (27.5 / 37.5 / 32.5), normalised to 100, and it stays empty until all three domains have enough data. **Label it "estimate - not an official prediction of your exam score"**, because Microsoft's passing score (700) is a scaled score, not a plain percentage.
 
 ### Study Buddy RAG rules
 1. Retrieve with `search_knowledge()` from verified `notes` and verified `questions.explanation` (Postgres full-text search; a passage must match at least half of the question's meaningful words). Embeddings only if there is time.

@@ -66,6 +66,12 @@ select * from (
   select 14, 'real learner attempts saved so far',
          'INFO', (select count(*) from public.attempts)::text || ' attempts'
   union all
+  select 16, 'security hardening migration applied (attempt rate limit + Learn-only links)',
+         case when exists (select 1 from pg_trigger where tgname = 'attempts_limit_rate' and not tgisinternal)
+                   and exists (select 1 from pg_constraint where conname = 'questions_source_url_learn_only' and convalidated)
+                   and exists (select 1 from pg_constraint where conname = 'notes_source_url_learn_only' and convalidated) then 'OK' else 'FIX' end,
+         'run supabase/migrations/202610221500_security_hardening.sql if this says FIX'
+  union all
   select 15, 'AI answers in the last 24 hours (the caps are per rolling 24 hours)',
          'INFO', (select count(*) from public.ai_usage where created_at > now() - interval '24 hours')::text || ' used, global cap ' || coalesce((select value::text from public.app_settings where key = 'ai_global_daily_cap'), '?')
 ) x order by ord;

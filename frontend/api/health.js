@@ -7,8 +7,8 @@ async function countRows(base, key, table) {
     headers: { apikey: key, Prefer: 'count=exact', Range: '0-0' },
   });
   if (!res.ok) {
-    const detail = (await res.text()).slice(0, 200);
-    throw new Error(`${table}: HTTP ${res.status} ${detail}`);
+    // Do not pass the database's error text to a public page; the status code is enough to debug.
+    throw new Error(`${table}: HTTP ${res.status}`);
   }
   // Content-Range looks like "0-0/57" (or "*/0" when empty)
   const total = (res.headers.get('content-range') || '').split('/')[1];
@@ -50,6 +50,7 @@ export default async function handler(req, res) {
       verified_notes_visible: verifiedNotes,
     });
   } catch (err) {
-    return res.status(500).json({ ok: false, env, error: String(err.message || err) });
+    console.error(`[health] ${String(err.message || err).slice(0, 200)}`);
+    return res.status(500).json({ ok: false, env, error: 'Health check failed. See the Vercel function logs.' });
   }
 }

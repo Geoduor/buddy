@@ -1,0 +1,13 @@
+{
+  "name": "buddy-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "retrieval": "node run_tests.js retrieval"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "csv-parse": "^7.0.3",
+    "dotenv": "^16.4.5"
+  }
+}

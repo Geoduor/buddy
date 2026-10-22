@@ -1,1 +1,8 @@
 id,asked_by,question,expected,notes
+q01,Mark,What is the consumption-based model?,in_notes,direct
+q02,Mark,What is the purpose of an Azure virtual network?,in_notes,direct
+q03,Mark,What's the purpose of tags on Azure resources?,in_notes,direct
+q04,Mark,Explain Saas,in_notes,direct
+q05,Yego,"Differentiating between terms as a beginner , such as differentiating between redundancy option and  storage tiers.",in_notes,reworded; needs two notes (D2.3.2 tiers and D2.3.3 redundancy)
+q06,Yego,Steps to help in creating a storage account.,outside_notes,"out_of_notes; notes describe account types (D2.3.4), not creation steps"
+q07,Yego,What azure course can I pursue after finishing my A-Z certification course and would it be free or I get to pay?,outside_notes,out_of_notes; courses and prices are not in the notes

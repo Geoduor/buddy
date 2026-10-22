@@ -29,3 +29,22 @@ Do not promote anything yet. Steps:
 3. Apply `search_knowledge_v3.sql` in the Supabase SQL editor (same name and signature, so it replaces the live one; the old definition is in `202610210100_study_buddy_support.sql` if you need to roll back), run the test again, and compare.
 4. Promote v3 (copy it into `supabase/migrations/` with a new timestamp) only if it is no worse on every outside-notes question.
 5. Extend the synonym table only for words real learners used, not for words we imagine.
+
+## v4 (23 Oct): filler words, compared with v3 on the same content (98 questions, 59 notes, run locally)
+
+Why: the live v3 returned 0 rows for test question q05 (Yego, "Differentiating between terms as a beginner, such as differentiating between redundancy option and storage tiers"). It stems to 7 words; three are filler (differenti, term, beginn); the best passages match 3 of 7 and the rule needs 4. v4 stops filler words counting.
+
+| Question | v3 | v4 |
+|---|---|---|
+| q05 redundancy vs tiers (in notes) | no rows | D2.3.3, D3.1.2, D2.3.3, D2.3.2 (both needed objectives found) |
+| IaaS vs PaaS | D2.2.1 first | D1.3.2, D1.3.4 first |
+| Vertical vs horizontal scaling | D1.2.1 plus two unrelated | D1.2.1 only (three rows) |
+| What does CapEx mean? | D1.1.5 first | D1.1.6 first |
+| q06 storage account steps (outside notes) | 1 row (D3.1.1) | 4 rows (D3.1.1, D2.3.4 x2, D3.1.2) **worse** |
+| q07 and the other outside probes | no rows | no rows (unchanged) |
+| q01-q04, other probes | - | unchanged |
+
+Honest caveats:
+- q05 is what motivated v4, so it can no longer count as an unbiased test. Fresh real questions are needed to judge v4.
+- q06 got worse: fewer counted words lowers the bar, so an out-of-notes question pulls more unrelated passages. Refusing it is the job of the NOT_IN_NOTES check and the citation check, which only the full test shows.
+- Not promoted. Apply in the SQL editor, rerun `npm run retrieval`, and run the full test before deciding.

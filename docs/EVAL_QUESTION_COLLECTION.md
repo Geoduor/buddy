@@ -24,17 +24,17 @@ Geofry runs `backend/tests/run_tests.js` against the live site once the content 
 ## What the repo covers (to classify `in_notes` vs `outside_notes`)
 A note counts only once it is **verified** in the database. Check with `select objective_id from public.notes where status='verified';`.
 
-| Group | Topic | Questions in repo | Notes in repo (objective ids) |
+| Group | Topic | Questions | Notes cover these objectives |
 |---|---|---|---|
 | D1.1 | Describe cloud computing | 7 | D1.1.1, D1.1.2, D1.1.3, D1.1.4, D1.1.5, D1.1.6, D1.1.7 |
 | D1.2 | Describe the benefits of using cloud services | 8 | D1.2.1, D1.2.2, D1.2.3, D1.2.4 |
 | D1.3 | Describe cloud service types | 7 | D1.3.1, D1.3.2, D1.3.3, D1.3.4 |
 | D2.1 | Describe the core architectural components of Azure | 11 | D2.1.1, D2.1.2, D2.1.3, D2.1.4, D2.1.5, D2.1.6, D2.1.7 |
 | D2.2 | Describe Azure compute and networking services | 14 | D2.2.1, D2.2.2, D2.2.3, D2.2.4, D2.2.5, D2.2.6 |
-| D2.3 | Describe Azure storage services | 6 | D2.3.1 |
+| D2.3 | Describe Azure storage services | 6 | D2.3.1, D2.3.2, D2.3.3, D2.3.4, D2.3.5, D2.3.6 |
 | D2.4 | Describe Azure identity, access, and security | 11 | D2.4.1, D2.4.2, D2.4.3, D2.4.4, D2.4.5, D2.4.6, D2.4.7, D2.4.8 |
-| D3.1 | Describe cost management in Azure | 6 | D3.1.3 |
-| D3.2 | Describe features and tools in Azure for governance and compliance | 6 | D3.2.2 |
+| D3.1 | Describe cost management in Azure | 6 | D3.1.1, D3.1.2, D3.1.3, D3.1.4 |
+| D3.2 | Describe features and tools in Azure for governance and compliance | 6 | D3.2.1, D3.2.2, D3.2.3 |
 | D3.3 | Describe features and tools for managing and deploying Azure resources | 7 | D3.3.1, D3.3.2, D3.3.3, D3.3.4, D3.3.5 |
 | D3.4 | Describe monitoring tools in Azure | 8 | D3.4.1, D3.4.2, D3.4.3 |
 

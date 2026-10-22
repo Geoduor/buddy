@@ -1,4 +1,4 @@
-# Study Buddy evaluation: how we test the prompt (owner: Geofry, runner: Mark)
+# Study Buddy evaluation: how we test the prompt (owner and runner: Geofry)
 
 > The questions live in `content/test-questions/test_questions.csv` (columns `id,asked_by,question,expected,notes`, where `expected` is `in_notes` or `outside_notes`). Mark's `backend/tests/run_tests.js` reads that file. The `type` mix below is for planning; put it in the `notes` column (e.g. `reworded`, `trick`).
 
@@ -33,6 +33,6 @@ and in the README. This is evidence for the Prompt Engineering criterion (20%).
 |---|---|---|---|---|---|---|---|
 
 ## What to do with failures
-- Reworded question refused: tell Mark (retrieval tuning). Do not loosen the "match half the words" rule without re-running everything.
+- Reworded question refused: tell Geofry (retrieval tuning). Do not loosen the "match half the words" rule without re-running everything.
 - Unsupported claim in an answer: Geofry tightens the prompt, then the whole set is re-run.
 - Keep the failed examples in the README: honest evidence of testing scores better than a perfect-looking table.

@@ -6,3 +6,5 @@ Files here are proposals waiting for evidence. Nothing in this folder is run by 
   2. run the preflight queries in the file header (types must match);
   3. apply v2, run the same test, and compare. Promote only if it is no worse on the outside-notes questions (still returns nothing for them).
   Note: it changes the text-search config from `simple` to `english`, so stemmed words will match differently.
+
+- `search_knowledge_v3.sql` (Geofry/Claude): keeps v1's security model, ignores the noise words "azure"/"microsoft", adds a small synonym table. See `RETRIEVAL_FINDINGS.md` for the comparison with v1 and Mark's v2, including why v2 is not the base (it is `security definer`). `dev_probes.tsv` holds the developer probes used; they are NOT the evaluation set.

@@ -77,6 +77,7 @@ Names only. Never commit real values. Copy `.env.example` to `.env`.
 ## Tests and checks
 - `node frontend/server/study-buddy.test.mjs`: 23 offline tests of the Study Buddy endpoint (no network, no keys needed).
 - `node scripts/validate_content.mjs`: format check for the content CSVs.
+- `node frontend/src/lib/safeUrl.test.mjs` and `npm run lint` (in `frontend/`): the safe-link tests and the rule that forbids writing HTML into the page. Security review: `docs/SECURITY_REVIEW.md`.
 - `scripts/db_health_check.sql`: read-only check of the live Supabase database (security settings, caps, content counts). Paste it into the SQL editor; every row should say OK.
 - GitHub runs both on every pull request, plus a check that no `.env` file or real-looking key is committed.
 - `main` is protected: changes go in through pull requests.

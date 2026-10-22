@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { askBuddy, friendlyError } from '../lib/api'
+import { learnUrl } from '../lib/safeUrl'
 
 const MIN = 3
 const MAX = 500
@@ -89,9 +90,9 @@ export default function StudyBuddy() {
                       {m.reply.sources.map((s, i) => (
                         <li key={i} id={`${m.id}-src-${s.n ?? 'x'}`} tabIndex={-1}>
                           {s.n != null && <span className="src-n">[{s.n}]</span>}{' '}
-                          <a href={s.source_url} target="_blank" rel="noreferrer">
-                            {s.objective_text || s.title || 'Microsoft Learn'}
-                          </a>
+                          {learnUrl(s.source_url)
+                            ? <a href={learnUrl(s.source_url)} target="_blank" rel="noreferrer">{s.objective_text || s.title || 'Microsoft Learn'}</a>
+                            : <span>{s.objective_text || s.title || 'Microsoft Learn'}</span>}
                           {s.objective_id && <span className="muted small"> (objective {s.objective_id})</span>}
                         </li>
                       ))}

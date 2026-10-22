@@ -5,6 +5,7 @@ import { ensureSession } from '../lib/session'
 import { loadOutline, scopeLabel } from '../lib/outline'
 import Bubble from '../components/Bubble'
 import { Loading, ErrorBox } from '../components/Notice'
+import { learnUrl } from '../lib/safeUrl'
 
 const SESSION_SIZE = 10
 const LETTERS = ['A', 'B', 'C', 'D']
@@ -190,7 +191,7 @@ function Session({ questions, label, onAgain }) {
           {picked !== q.correct_index && <p>The right answer is <strong>{LETTERS[q.correct_index]}</strong>.</p>}
           {q.explanation && <p>{q.explanation}</p>}
           {wrongText && <p><strong>Why {LETTERS[picked]} is wrong:</strong> {wrongText}</p>}
-          {q.source_url && <p><a href={q.source_url} target="_blank" rel="noreferrer">Read this on Microsoft Learn</a></p>}
+          {learnUrl(q.source_url) && <p><a href={learnUrl(q.source_url)} target="_blank" rel="noreferrer">Read this on Microsoft Learn</a></p>}
           {saveError && <p className="save-warning" role="alert">This answer could not be saved, so it will not count toward readiness.</p>}
           <button className="btn btn-primary" onClick={next} autoFocus>
             {index + 1 === questions.length ? 'Finish round' : 'Next question'}

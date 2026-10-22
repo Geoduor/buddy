@@ -1,6 +1,6 @@
 # Study Buddy evaluation: collecting the test questions
 
-Owner: Geofry. Runner: Mark. File to fill: `content/test-questions/test_questions.csv` (columns `id,asked_by,question,expected,notes`).
+Owner and runner: Geofry (taken over from Mark). File to fill: `content/test-questions/test_questions.csv` (columns `id,asked_by,question,expected,notes`).
 
 The evaluation is only honest if the questions come from real people. **Do not let anyone (or any AI) invent a teammate's question.**
 
@@ -19,7 +19,7 @@ Ask all five of you. That gives about 15 questions. Add 1 or 2 "trick" questions
 Quote any question that contains a comma. Do not change anyone's wording to make it easier for Buddy.
 
 ## Step 3. Run it
-Mark runs `backend/tests/run_tests.js` against the live site once the content is verified, and records the results in the table at the bottom of `prompts/STUDY_BUDDY_EVAL.md`. Keep the failures. They are findings, not embarrassments.
+Geofry runs `backend/tests/run_tests.js` against the live site once the content is verified, and records the results in the table at the bottom of `prompts/STUDY_BUDDY_EVAL.md`. Keep the failures. They are findings, not embarrassments.
 
 ## What the repo covers (to classify `in_notes` vs `outside_notes`)
 A note counts only once it is **verified** in the database. Check with `select objective_id from public.notes where status='verified';`.

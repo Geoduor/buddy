@@ -1,6 +1,6 @@
 # Demo script (about 3 minutes) and recording checklist
 
-Owner: Geofry. Everything shown must be real: real questions answered by a real teammate, real Buddy replies, no staged numbers.
+Owner: Geofry. Video: Jess. Everything shown must be real: real questions answered by a real teammate, real Buddy replies, no staged numbers.
 Anything in `[BRACKETS]` is for the team to fill in with the truth. Do not invent it.
 
 ## Before you press record (checklist)

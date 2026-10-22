@@ -93,9 +93,9 @@ Names only. Never commit real values. Copy `.env.example` to `.env`.
 |---|---|
 | Geofry Oduor | Team lead; database, hosting, AI integration, readiness |
 | Sheryl | Frontend |
-| Mark | Content importer, retrieval tuning, test harness |
-| Jess | Question and note author |
-| Yego | Documentation and pitch |
+| Mark | Content importer (his remaining duties moved to Geofry) |
+| Jess | Question and note author, demo video |
+| Yego | Documentation, quiz content and pitch deck |
 
 ## Credits and sources
 Exam structure and domain weights come from the official Microsoft Learn study guide for Exam AZ-900: https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-900. Microsoft and Azure are trademarks of Microsoft Corporation, used here only to describe the exam.

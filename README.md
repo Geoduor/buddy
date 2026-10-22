@@ -101,6 +101,10 @@ Names only. Never commit real values. Copy `.env.example` to `.env`.
 ## Credits and sources
 Exam structure and domain weights come from the official Microsoft Learn study guide for Exam AZ-900: https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-900. Microsoft and Azure are trademarks of Microsoft Corporation, used here only to describe the exam.
 
+## License
+
+MIT. See [LICENSE](LICENSE). The AZ-900 exam structure and objective text belong to Microsoft and are used here only to describe the exam; Microsoft and Azure are trademarks of Microsoft Corporation.
+
 ## Disclaimer
 
 This is an unofficial study aid. It is not an official Microsoft product, and the readiness estimate does not predict your real exam score. Always check learn.microsoft.com for the latest AZ-900 skills outline.

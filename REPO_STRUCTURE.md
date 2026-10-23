@@ -10,9 +10,12 @@ buddy/
 ├── README.md                  <- Yego
 ├── PROJECT_BRIEF.md           <- Geofry (the team's source of truth)
 ├── REPO_STRUCTURE.md          <- Geofry (this file)
+├── PRD.md                     <- Geofry (product requirements)
+├── AGENTS.md, CLAUDE.md       <- Geofry (rules for AI assistants)
+├── CONTRIBUTING.md, SECURITY.md, LICENSE   <- Geofry
 ├── .gitignore                 <- Geofry
 ├── .env.example               <- Geofry (fake values only)
-├── .github/                   <- Geofry (PR template, workflows)
+├── .github/                   <- Geofry (PR and issue templates, CODEOWNERS, workflows)
 │
 ├── frontend/                  <- the deployed site (Vercel root directory)
 │   ├── (Sheryl's Vite + React app: src/, index.html, package.json ...)   <- SHERYL
@@ -20,12 +23,13 @@ buddy/
 │   └── server/                <- GEOFRY ONLY: server-side helpers for api/ (prompt, providers, tests)
 │
 ├── backend/
-│   ├── importer/              <- MARK: CSV -> Supabase importer (questions and notes)
-│   ├── tests/                 <- MARK: Study Buddy test harness + recorded results
+│   ├── importer/              <- CSV -> Supabase importer (questions and notes); Mark built it, Geofry now owns it
+│   ├── tests/                 <- Study Buddy test harness + recorded results; Mark built it, Geofry now owns it
 │   └── study-buddy/           <- (unused: Study Buddy lives in frontend/api/ so Vercel can deploy it)
 │
 ├── supabase/
 │   ├── migrations/            <- schema + SQL functions (see naming rule below)
+│   ├── candidates/            <- GEOFRY: retrieval-tuning proposals, NOT migrations
 │   └── seed/                  <- GEOFRY: seeds objectives from content/objectives.json
 │
 ├── content/
@@ -37,10 +41,13 @@ buddy/
 ├── prompts/                   <- GEOFRY: Study Buddy prompt explained (study_buddy.md)
 │
 ├── docs/
+│   ├── ARCHITECTURE.md        <- GEOFRY: how it is built
 │   ├── API_CONTRACTS.md       <- GEOFRY: how frontend, database and Study Buddy talk
+│   ├── SECURITY_REVIEW.md, SUBMISSION_CHECKLIST.md, EVAL_QUESTION_COLLECTION.md   <- GEOFRY
 │   ├── VERIFICATION_CHECKLIST.md <- GEOFRY: how content becomes `verified`
-│   ├── screenshots/           <- SHERYL adds, YEGO uses
-│   └── pitch/                 <- YEGO: deck outline, demo script
+│   ├── demo/                  <- the demo video
+│   ├── screenshots/           <- stills from the demo, real screenshots
+│   └── pitch/                 <- deck outline, demo script (Yego owns the deck)
 │
 └── scripts/                   <- GEOFRY: setup helpers, verify_content.sql
 ```
@@ -52,7 +59,7 @@ buddy/
 | `frontend/` (everything except the two folders below) | Sheryl | read only |
 | `frontend/api/`, `frontend/server/` | Geofry | read only. **Sheryl: never delete or overwrite these when you move your app in.** |
 | `prompts/`, `docs/API_CONTRACTS.md`, `docs/VERIFICATION_CHECKLIST.md` | Geofry | read only |
-| `backend/importer/`, `backend/tests/`, `content/test-questions/` | Mark | read only |
+| `backend/importer/`, `backend/tests/`, `content/test-questions/` | Geofry (Mark built them; his remaining duties moved to Geofry) | read only |
 | `supabase/migrations/` | Geofry (schema), Mark (his SQL functions) | add only your own new file |
 | `supabase/seed/`, `scripts/`, `.github/`, root config | Geofry | read only |
 | `content/questions/`, `content/notes/` | Jess, Yego | add only your own files |

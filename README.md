@@ -52,9 +52,21 @@ API shapes are documented in [`docs/API_CONTRACTS.md`](docs/API_CONTRACTS.md).
 | `prompts/` | Study Buddy prompt notes and evaluation plan |
 | `scripts/` | Smoke test, content validator, verification SQL |
 | `backend/tests/` | Study Buddy test harness (reads `content/test-questions/test_questions.csv`). Run: `cd backend/tests && npm install && npm run retrieval` |
-| `docs/` | API contracts, verification checklist |
+| `docs/` | Architecture, API contracts, verification checklist, security review, submission checklist, demo video, screenshots, pitch outline and demo script |
+| `supabase/candidates/` | Retrieval-tuning proposals (not migrations; never run automatically) |
 
 Full ownership rules: [`REPO_STRUCTURE.md`](REPO_STRUCTURE.md).
+
+## Project documents
+| Document | What it is |
+|---|---|
+| [`PRD.md`](PRD.md) | Product requirements: problem, users, goals, non-goals, requirements with acceptance checks, risks |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | How the pieces fit together and how a Study Buddy answer is produced |
+| [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) | The team's rules and anti-hallucination protocol |
+| [`AGENTS.md`](AGENTS.md) | Instructions for AI coding assistants working in this repo |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to add content or code and open a pull request |
+| [`SECURITY.md`](SECURITY.md) and [`docs/SECURITY_REVIEW.md`](docs/SECURITY_REVIEW.md) | How to report a problem, and what we already protect |
+| [`docs/SUBMISSION_CHECKLIST.md`](docs/SUBMISSION_CHECKLIST.md) | What must be true before we submit |
 
 ## Run it yourself
 1. **Supabase.** Create a project. In the SQL editor run the files in `supabase/migrations/` in filename order, then `supabase/seed/objectives_seed.sql`. Turn on **Anonymous sign-ins** in Authentication settings.

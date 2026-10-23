@@ -6,7 +6,7 @@ Built for the *Vibe Coding Hackathon: AZ-900 Exam Prep Edition* (#1MillionDevs),
 > **Unofficial - not affiliated with or endorsed by Microsoft.** All questions and notes are our own, written in our own words and linked to the public AZ-900 skills outline on Microsoft Learn. No real exam questions, "braindump" content or paid practice-test material is used.
 
 - **Live demo:** https://buddy-six-khaki.vercel.app
-- **Demo video:** _PLACEHOLDER - add the link after recording (Friday)_
+- **Demo video:** [docs/demo/buddy-demo.mp4](docs/demo/buddy-demo.mp4) (58 seconds, screen recording of the live site on a phone)
 - **Pitch deck:** _PLACEHOLDER - add the link when Yego has it_
 
 ## The problem

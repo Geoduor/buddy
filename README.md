@@ -7,7 +7,7 @@ Built for the *Vibe Coding Hackathon: AZ-900 Exam Prep Edition* (#1MillionDevs),
 
 - **Live demo:** https://buddy-six-khaki.vercel.app
 - **Demo video:** [docs/demo/buddy-demo.mp4](docs/demo/buddy-demo.mp4) (58 seconds, screen recording of the live site on a phone)
-- **Pitch deck:** _PLACEHOLDER - add the link when Yego has it_
+- **Pitch deck:** https://docs.google.com/presentation/d/1wburzq7PgKsgl-HTh-rkuZWi01nHBbj1/edit?usp=sharing&ouid=108525956342255882573&rtpof=true&sd=true
 
 ## The problem
 Learners preparing for AZ-900 often study from scattered notes and practice questions of unknown quality, with no clear picture of which exam areas they are weak in. Buddy puts three things in one place: practice questions that explain themselves, a view of how ready you are per exam area, and a study helper that never answers from outside its checked notes.

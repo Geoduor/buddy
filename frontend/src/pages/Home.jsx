@@ -69,19 +69,22 @@ export default function Home() {
         <p className="muted">The three exam areas and their topics, from Microsoft's published AZ-900 skills outline.</p>
         {error && <ErrorBox onRetry={() => setAttempt((a) => a + 1)}>{error}</ErrorBox>}
         {!domains && !error && <Loading>Loading topics</Loading>}
-        <div className="domains">
+        <div className="domains domains-home">
           {domains?.map((d) => (
             <article key={d.id} className="domain">
               <header>
                 <h3>{d.title}</h3>
                 <p className="muted small">{d.weight_min}% to {d.weight_max}% of the exam</p>
               </header>
-              <ul className="topic-list">
-                <li><Link to={`/quiz?scope=${d.id}`} className="topic topic-all">Whole area</Link></li>
-                {d.groups.map((g) => (
-                  <li key={g.id}><Link to={`/quiz?scope=${g.id}`} className="topic">{g.title}</Link></li>
-                ))}
-              </ul>
+              <Link to={`/quiz?scope=${d.id}`} className="topic topic-all">Practise this whole area</Link>
+              <details className="topic-more">
+                <summary>Or pick one of {d.groups.length} topics</summary>
+                <ul className="topic-list">
+                  {d.groups.map((g) => (
+                    <li key={g.id}><Link to={`/quiz?scope=${g.id}`} className="topic">{g.title}</Link></li>
+                  ))}
+                </ul>
+              </details>
             </article>
           ))}
         </div>

@@ -107,7 +107,7 @@ Names only. Never commit real values. Copy `.env.example` to `.env`.
 |---|---|
 | Geofry Oduor | Team lead; database, hosting, AI integration, readiness |
 | Sheryl | Frontend |
-| Mark | Content importer (his remaining duties moved to Geofry) |
+| Mark | Content importer |
 | Jess | Question and note author, demo video |
 | Yego | Documentation, quiz content and pitch deck |
 

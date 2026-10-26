@@ -112,7 +112,7 @@ export default function StudyBuddy() {
         <textarea id="q" rows={2} value={text} maxLength={MAX} disabled={locked}
           placeholder={locked ? 'Daily limit reached. Come back tomorrow.' : 'Ask about an AZ-900 concept'}
           onChange={(e) => setText(e.target.value)}
-          onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) send(e) }} />
+          onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) send(e) }} />
         <div className="composer-row">
           <span className="muted small">{text.length} / {MAX}</span>
           <button className="btn btn-primary" type="submit" disabled={!valid || busy || locked}>{busy ? 'Checking' : 'Ask'}</button>

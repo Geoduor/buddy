@@ -131,7 +131,8 @@ function Session({ questions, label, onAgain }) {
       const k = e.key.toUpperCase()
       if (!answered && ['A', 'B', 'C', 'D', '1', '2', '3', '4'].includes(k)) {
         choose(LETTERS.includes(k) ? LETTERS.indexOf(k) : Number(k) - 1)
-      } else if (answered && e.key === 'Enter' && e.target.tagName !== 'A') {
+      } else if (answered && e.key === 'Enter' && e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+        // A focused button (the autofocused "Next question") already handles Enter itself; handling it here too could skip a question.
         next()
       }
     }
